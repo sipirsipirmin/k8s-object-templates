@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: < namespace_name >
+  name: < service_name > 
+spec:
+  selector:
+    < label_name >: < label_value >
+  ports:
+    - protocol: TCP
+      port: < cluster_ip_port >
+      targetPort: < port_number_or_name >
+  type: LoadBalancer

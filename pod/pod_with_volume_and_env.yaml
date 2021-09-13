@@ -1,0 +1,36 @@
+# Here is an pod tamplate please fill < .... >
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    <label_name >: < label_value >
+  name: < pod_name >
+  namespace: < pod_namespace >
+spec:
+  containers:
+  - command: ["< command >"]
+    args: ["< arg_1 >", "< arg_2>"]
+    image: < pod_image >
+    name: < container_name >
+    resources: {}
+    volumeMounts:
+    - mountPath: < path_to_mount_on_container >
+      name: < volume_name >
+    - name: < configmap_volume_name >
+      mountPath: < mount_path >
+      subPath: < configmap_key_name >  # if you want configmap as single file you can write a key name
+    env:
+      - name: < env_name >
+        value: "< env_value >"
+  dnsPolicy: ClusterFirst
+  hostNetwork: true # remove this if you dont know what you do
+  volumes:
+  - configMap: 
+      name: < configmap_name >
+    name: < configmap_volume_name >
+  - hostPath:
+      path: < path_to_mount_on_host >
+      type: DirectoryOrCreate
+    name: < volume_name >
+  restartPolicy: Always # Never
+status: {}

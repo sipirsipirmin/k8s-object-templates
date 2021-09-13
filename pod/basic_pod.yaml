@@ -1,0 +1,17 @@
+# Here is an pod tamplate please fill < .... >
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    <label_name >: < label_value >
+  name: < pod_name >
+  namespace: < pod_namespace >
+spec:
+  containers:
+  - command: ["< command >"]
+    args: ["< arg_1 >", "< arg_2>"]
+    image: < pod_image >
+    name: < container_name >
+    ports:
+    - containerPort: < port_number >
+      name: < port_name > 

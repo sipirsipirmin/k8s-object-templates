@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: < deployment_name >
+  labels:
+    < deployment_label_name >: < deployment_label_value >
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      < container_label_name >: < container_label_value >
+  template:
+    metadata:
+      labels:
+        < container_label_name >: < container_label_value >
+    spec:
+      containers:
+      # POD TEMPLATE
+      # - name: nginx
+      #   image: nginx:1.14.2
+      #   ports:
+      #   - containerPort: 80

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: < service_name >
+  namespace: < namespace_name >
+spec:
+  type: NodePort
+  selector:
+    < label_name >: < label_value >
+  ports:
+    - protocol: TCP
+      port: < cluster_ip_port >
+      targetPort: < pod_port > 
+      nodePort: < node_port >

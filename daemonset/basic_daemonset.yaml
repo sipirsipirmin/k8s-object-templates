@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: < daemonset_name >
+spec:
+  selector:
+    matchLabels:
+      < label_name >: < label_value > # has to match .spec.template.metadata.labels
+  template:
+    #
+    #  pod template
+    #
+    metadata:
+      name:
+      labels:
+        < label_name >: < label_value >
+
+    spec:
+      containers:
+      - ..............

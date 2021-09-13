@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: < policy_name > 
+  namespace: < policy_namespace >
+spec:
+  podSelector:
+    matchLabels:
+      < pod_label_name >: < pod_label_value>
+  policyTypes:
+  - Ingress
+  - Egress 
+  ingress:
+  # this specification equals to logical; (podSelector & namespaceSelector) | ipBlock
+  - from:
+    - podSelector:
+        matchLabels:
+          < from_pod_label_name >: < from_pod_label_value >
+      namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: < namespace_name >
+    - ipBlock:
+        cidr: < cidr >
+    ports:
+    - protocol: TCP
+      port: < port_number >
+  egress:
+  - to:
+    - ipBlock:
+        cidr: < cidr > 
+    ports:
+    - protocol: TCP
+      port: < port_number >
